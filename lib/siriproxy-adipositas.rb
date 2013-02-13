@@ -18,11 +18,13 @@ class SiriProxy::Plugin::Adipositas < SiriProxy::Plugin
     set_state :widrig
     artikel[0] = artikel[0, 1].upcase
     say "#{artikel} #{name} ist sehr dick!"
+    request_completed
   end
   
-  listen_for /wie dick/i, within state :widrig do
+  listen_for /wie dick/i, within_state: :widrig do
     say "MEGA DICK!"
     set_state nil
+    request_completed
   end
   
 end
